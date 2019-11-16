@@ -16,7 +16,6 @@ const cors = require('cors');
 
 exports.handle = function(app, wss)
 {
-    console.log('1');
     app.get('/', onMain);
     app.get('/market/*', onMain);
     app.get('/index.html', onMain);
