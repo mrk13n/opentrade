@@ -3,13 +3,8 @@
 Live version: https://trade.multicoins.org/
 
 
-Step-by-step install instructions:
-
-1. Register on the VPS hosting like this https://m.do.co/c/1ece5d76d5cd
-2. Create "Droplet" Ubuntu 16 x64 / 1GB / 1vCPU / 25 GB SSD
-3. Log in to Droplet over SSH (You will receive a email with IP, username and password)
-4
-
+Install instructions on Droplet!:
+ 
 ```
 [sudo] apt-get update
 [sudo] apt-get install build-essential libssl-dev curl -y
@@ -18,42 +13,21 @@ bash install_nvm.sh
 [sudo] reboot
 
 nvm install 12.6.0
+git clone https://github.com/naz466/opentrade.git or clone
 
-git clone --recurse-submodules https://github.com/3s3s/opentrade.git
 cd opentrade
 
-[sudo] npm install 
+[sudo] npm install sqlite3
+[sudo] npm install
 [sudo] npm install -g forever
-```
-
-## Here is an example of the file ~/opentrade/server/modules/private_constants.js Edit with your configs.
-```
-'use strict';
-
-exports.recaptcha_priv_key = 'YOUR_GOOGLE_RECAPTCHA_PRIVATE_KEY';
-exports.password_private_suffix = 'LONG_RANDOM_STRING1';
-exports.SSL_KEY = '../ssl_certificates/privkey.pem'; //change to your ssl certificates private key
-exports.SSL_CERT = '../ssl_certificates/fullchain.pem'; //change to your ssl certificates fullchain
-
-exports.walletspassphrase = {
-    'MC' : 'LONG_RANDOM_STRING2',
-    'BTC' : 'LONG_RANDOM_STRING3',
-    'DOGE' : 'LONG_RANDOM_STRING4'
-};
-```
-
-**You MUST change default value exports.password_private_suffix !**
-
-**After, you can run exchange**
-
-```
-cd ~/opentrade/databaseServer
-[sudo] forever start main.js
-cd ~/opentrade/accountsserver
+ 
+cd accountsserver
 git checkout master
-[sudo] forever start main.js
-cd  ~/opentrade/server
-[sudo] forever start main.js
+cd ..
+
+[sudo] forever start databaseServer/main.js
+[sudo] forever start accountsserver/main.js
+[sudo] forever start server/main.js
 ```
 
 In your browser address bar, type https://127.0.0.1
@@ -153,6 +127,3 @@ Litecoin LTbDdTijroJEyXt27apQSnuMY4RoXyjdq2
 # License
 
 OpenTrade is released under the terms of the MIT license. See LICENSE for more information or see https://opensource.org/licenses/MIT.
-
-
-
