@@ -1,10 +1,12 @@
 # OpenTrade is the best opensource cryptocurrency exchange!
 
-Live version: https://trade.multicoins.org/
+Live version: https://134.209.41.117/
 
 
-Install instructions on Droplet!:
- 
+# Install instructions on Linux:
+
+Open in terminal folder where you want clone repo.
+
 ```
 sudo apt update
 sudo apt upgrade
@@ -33,10 +35,38 @@ cd ../server
 sudo forever start main.js
 ```
 
+# Install instructions on Windows(with WebStorm):
+
+Open folder where you want clone repo.
+
+Click rbm and choose 'Git Bash Here'
+
+In Git Bash:
+```
+git clone --recurse-submodules https://github.com/mrk13n/opentrade.git
+```
+
+Then open project in WebStorm.
+
+In WebStorm terminal:
+```
+npm install sqlite3
+npm install
+npm install -g forever
+
+cd databaseServer
+forever start main.js
+
+cd ../accountsserver
+git checkout master
+forever start main.js
+
+cd ../server
+forever start main.js
+```
+
 In your browser address bar, type https://127.0.0.1
 You will see OpenTrade.
-
-The first registered user will be exchange administrator. 
 
 # Add trade pairs
 
