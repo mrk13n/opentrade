@@ -6,31 +6,31 @@ Live version: https://trade.multicoins.org/
 Install instructions on Droplet!:
  
 ```
-[sudo] apt update
-[sudo] apt upgrade
-[sudo] apt install build-essential libssl-dev curl -y
+sudo apt update
+sudo apt upgrade
+sudo apt install build-essential libssl-dev curl -y
 
 curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh -o install_nvm.sh
 bash install_nvm.sh
-[sudo] reboot
+sudo reboot
 nvm install 12.6.0
 
 git clone --recurse-submodules https://github.com/naz466/opentrade.git
 cd opentrade
 
-[sudo] npm install sqlite3
-[sudo] npm install
-[sudo] npm install -g forever
+sudo npm install sqlite3
+sudo npm install
+sudo npm install -g forever
 
 cd databaseServer
-[sudo] forever start main.js
+sudo forever start main.js
 
 cd ../accountsserver
 git checkout master
-[sudo] forever start main.js
+sudo forever start main.js
 
 cd ../server
-[sudo] forever start main.js
+sudo forever start main.js
 ```
 
 In your browser address bar, type https://127.0.0.1
