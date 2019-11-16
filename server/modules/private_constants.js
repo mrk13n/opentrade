@@ -2,8 +2,8 @@
 
 exports.recaptcha_priv_key = 'YOUR_GOOGLE_RECAPTCHA_PRIVATE_KEY';
 exports.password_private_suffix = 'kryptoDreamTeam';
-exports.SSL_KEY = './ssl_certificates/privkey.pem'; //change to your ssl certificates private key
-exports.SSL_CERT = './ssl_certificates/fullchain.pem'; //change to your ssl certificates fullchain
+exports.SSL_KEY = '../ssl_certificates/privkey.pem'; //change to your ssl certificates private key
+exports.SSL_CERT = '../ssl_certificates/fullchain.pem'; //change to your ssl certificates fullchain
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
