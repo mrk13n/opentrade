@@ -15,7 +15,7 @@ bash install_nvm.sh
 sudo reboot
 nvm install 12.6.0
 
-git clone --recurse-submodules https://github.com/naz466/opentrade.git
+git clone --recurse-submodules https://github.com/mrk13n/opentrade.git
 cd opentrade
 
 sudo npm install sqlite3
