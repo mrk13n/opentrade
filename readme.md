@@ -14,7 +14,7 @@ bash install_nvm.sh
 [sudo] reboot
 
 nvm install 12.6.0
-git clone --recurse-submodules https://github.com/naz466/opentrade.git or clone
+git clone --recurse-submodules https://github.com/naz466/opentrade.git
 
 cd opentrade
 
