@@ -36,8 +36,9 @@ exports.recaptcha_pub_key = "6LeX5SQUAAAAAKTieM68Sz4MECO6kJXsSR7_sGP1";
 const MAX_IP_CONNECTIONS = 100;
 
 const MAX_USER_WITHDRAW = 100; //Percentage from trade deposit
+const path = require('path');
 
-const DATABASE_PATH = '/root/opentrade/server/database/sqlite.db';
+const DATABASE_PATH = path.join(__dirname, 'database/sqlite.db');
 const PRIVATE_CONSTANTS_PATH = "./modules/private_constants";
 
 exports.dbTables = [
