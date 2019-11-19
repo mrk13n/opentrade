@@ -6,8 +6,7 @@ pre {
     line-height: 1.42857143;
     color: #333;
     word-break: break-all;
-    word-wrap: break-word;
-    background-color: #f5f5f5;
+    word-wrap: break-word;navbarbackground-color: red;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -479,4 +478,60 @@ pre {
     right: 20px;
     top: 7px;
     color: #9aa8b9;
+}
+
+#id-button-lang-en, #id-button-lang-ru {
+	border-color: rebeccapurple;
+	color: white;
+}
+
+#id-button-lang-en:hover, #id-button-lang-ru:hover {
+	background-color: rebeccapurple !important;
+}
+
+.navbar.navbar-expand-lg.navbar-light.static-top {
+	background-image: url("http://i.piccy.info/i9/5c146e9ae2de2d060b7e7d947a6f787f/1574017239/20091/1348123/23.jpg");
+}
+
+.nav-link{
+	font-size: 20px;
+}
+
+.logo {
+	margin-left: -35px;
+}
+
+body {
+	background-image: url("http://i.piccy.info/i9/9f14135025487b9267f7c3515872d7b6/1574087201/166442/1348280/11.jpg");
+	background-attachment: fixed;
+	font-family: Garamond;
+}
+.card-header {
+	background-color: #200046;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+}
+
+.buybtn, .sellbtn  {
+	background-color: #200046 !important;
+	border-color: #200046 ;
+}
+
+#button_chat {
+	background-color: #C90E5F;
+}
+
+#id_btn_chat_ru, #id_btn_chat_en {
+	border-color: #C90E5F;
+	color: black;
+}
+
+#id_btn_chat_ru:hover, #id_btn_chat_en:hover {
+	background-color: #C90E5F;
+	color: black;
+}
+
+.navv {
+	background-color: #200046;
 }

@@ -53,8 +53,8 @@
               Chat
             </div>
             <div class="card-body p-0">
-              <button id='id_btn_chat_ru' type="button" class="btn btn-outline-primary btn-sm">Ru</button>
-              <button id='id_btn_chat_en' type="button" class="btn btn-outline-primary btn-sm">En</button>
+              <button id='id_btn_chat_ru' type="button" class="btn btn-outline-primary btn-sm"><b>Ru</b></button>
+              <button id='id_btn_chat_en' type="button" class="btn btn-outline-primary btn-sm"><b>En</b></button>
               <div id='chat-flex' class="d-flex d-flex-chat align-items-start bd-highlight mb-0" style="height: 350px">
                 <div id='chat-container_loading' class='container'>
                   <div class='row'><div class='col-md-12'>Loading...</div></div>
@@ -153,7 +153,7 @@
                     <span class="currency" id="id_total_buy"></span>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary"><%-__('Buy')%></button>
+                <button type="submit" class="buybtn btn btn-primary"><%-__('Buy')%></button>
               </form>
               
             </div>
@@ -236,7 +236,7 @@
                             <span class="currency" id="id_total_sell"></span>
                           </div>
                         </div>
-                        <button type="submit" class="btn btn-primary"><%-__('Sell')%></button>
+                        <button type="submit" class="sellbtn btn btn-primary"><%-__('Sell')%></button>
                       </form>
                   </div>
                 </div>          
@@ -246,12 +246,12 @@
            <!-- <div class="card-header">
               Your active orders:
             </div>-->
-            <ul class="nav nav-tabs">
+            <ul class="navv nav nav-tabs">
               <li class="nav-item">
-                <a class="nav-link active" id="active-orders-tab" data-toggle="tab" href="#active_orders" role="tab" aria-controls="active_orders" aria-selected="true"><%-__('Your active orders')%></a>
+                <a class="nav-link active" style="color:black;" id="active-orders-tab" data-toggle="tab" href="#active_orders" role="tab" aria-controls="active_orders" aria-selected="true"><%-__('Your active orders')%></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="history-orders-tab" data-toggle="tab" href="#history-orders" role="tab" aria-controls="history-orders" aria-selected="false"><%-__('Your history')%></a>
+                <a class="nav-link" id="history-orders-tab" style="color:white;" data-toggle="tab" href="#history-orders" role="tab" aria-controls="history-orders" aria-selected="false"><%-__('Your history')%></a>
               </li>
             </ul>
 
