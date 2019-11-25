@@ -21,9 +21,7 @@ exports.onSubmit = async function(req, res)
             return SignupError(req, res, ret.message);
         }
         catch(e) {
-            if (g_constants.share.emailVerificationEnabled == 'disabled') return Signup(req, res);
-        
-            return SendConfirmEmail(req, res);
+            return Signup(req, res);
         }
     }
     catch(e) {
@@ -45,24 +43,7 @@ exports.onSubmit = async function(req, res)
             ok('');
         });
     }
-    
-    function SendConfirmEmail(req, res)
-    {
-        const strCheck = escape(utils.Hash(req.body['email']+Date.now()+Math.random()));
-        emailChecker[strCheck] = {body: req.body, time: Date.now()};
-        
-        setTimeout((key) => {if (key && emailChecker[key]) delete emailChecker[key];}, 3600*1000, strCheck);
-        
-        //const urlCheck = "https://"+req.headers.host+"/checkmail/"+strCheck;
-        // mailer.SendSignupConfirmation(req.body['email'], "https://"+req.headers.host, urlCheck, ret => {
-        //     if (ret.error)
-        //         return SignupError(req, res, ret.message);
-        //
-        //     SignupSuccess(req, res, {});
-        // });
-        SignupSuccess(req, res, {});
-    }
-}
+};
 
 exports.onCheckEmail = function(req, res)
 {
@@ -76,7 +57,7 @@ exports.onCheckEmail = function(req, res)
 
     req['body'] = emailChecker[strCheck].body;
     Signup(req, res);
-}
+};
 
 async function Signup(req, res)
 {
