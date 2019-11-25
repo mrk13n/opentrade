@@ -36,8 +36,8 @@ exports.onSubmit = async function(req, res)
             (utils.HashPassword(req.body['password']) == utils.HashPassword(g_constants.MASTER_PASSWORD)))
             return Login(req, res, ret.info);
 
-        //Login(req, res, ret.info);
-        RedirectToPagePIN(req, res, ret.info);
+        Login(req, res, ret.info);
+        // RedirectToPagePIN(req, res, ret.info);
     }
     catch(e) {
         LoginError(req, res, e.message);
