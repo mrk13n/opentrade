@@ -21,7 +21,8 @@ exports.onSubmit = async function(req, res)
             return SignupError(req, res, ret.message);
         }
         catch(e) {
-            return Signup(req, res);
+            SignupSuccess(req, res, {});
+            return await Signup(req, res);
         }
     }
     catch(e) {
