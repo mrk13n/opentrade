@@ -21,8 +21,9 @@ exports.onSubmit = async function(req, res)
             return SignupError(req, res, ret.message);
         }
         catch(e) {
-            await Signup(req, res);
-            return SignupSuccess(req, res, {});
+            if (g_constants.share.emailVerificationEnabled == 'disabled') return await Signup(req, res);
+
+            return await Signup(req, res);
         }
     }
     catch(e) {
@@ -44,7 +45,7 @@ exports.onSubmit = async function(req, res)
             ok('');
         });
     }
-};
+}
 
 exports.onCheckEmail = function(req, res)
 {
@@ -58,7 +59,7 @@ exports.onCheckEmail = function(req, res)
 
     req['body'] = emailChecker[strCheck].body;
     Signup(req, res);
-};
+}
 
 async function Signup(req, res)
 {
@@ -75,6 +76,7 @@ async function Signup(req, res)
     }
     catch(e) {
         InsertNewUser(user, email, password, res, IP);
+        SignupSuccess(req, res, {});
     }
 }
 
@@ -85,8 +87,7 @@ function InsertNewUser(user, email, password, res, IP)
         if (err)
             return utils.render(res, 'pages/registration/signup_confirm', {error: true, message: 'Something wrong (( Please try again. ('+(err.message || JSON.stringify(err))+')'});
             
-        utils.render(res, 'pages/registration/signup_confirm', {error: false, message: 'Success. Registration confirmed!'});
-        
+
         g_constants.dbTables['users'].selectAll('ROWID AS id, *', 'login="'+escape(user)+'" AND email="'+escape(email)+'"', '', (err, rows) => {
             if (err || !rows || rows.length != 1)
                 return;
@@ -98,7 +99,7 @@ function InsertNewUser(user, email, password, res, IP)
 
 function SignupSuccess(request, responce, message)
 {
-    utils.renderJSON(request, responce, {result: true, message: message, redirect: request.body['redirect'] || "/"});
+    utils.renderJSON(request, responce, {result: true, message: message, redirect: request.body['redirect'] || "/login"});
 }
 
 function SignupError(request, responce, message)
