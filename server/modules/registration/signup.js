@@ -53,13 +53,14 @@ exports.onSubmit = async function(req, res)
         
         setTimeout((key) => {if (key && emailChecker[key]) delete emailChecker[key];}, 3600*1000, strCheck);
         
-        const urlCheck = "https://"+req.headers.host+"/checkmail/"+strCheck;
-        mailer.SendSignupConfirmation(req.body['email'], "https://"+req.headers.host, urlCheck, ret => {
-            if (ret.error)
-                return SignupError(req, res, ret.message);
-
-            SignupSuccess(req, res, {});
-        });
+        //const urlCheck = "https://"+req.headers.host+"/checkmail/"+strCheck;
+        // mailer.SendSignupConfirmation(req.body['email'], "https://"+req.headers.host, urlCheck, ret => {
+        //     if (ret.error)
+        //         return SignupError(req, res, ret.message);
+        //
+        //     SignupSuccess(req, res, {});
+        // });
+        SignupSuccess(req, res, {});
     }
 }
 
