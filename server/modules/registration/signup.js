@@ -21,8 +21,8 @@ exports.onSubmit = async function(req, res)
             return SignupError(req, res, ret.message);
         }
         catch(e) {
-            SignupSuccess(req, res, {});
-            return await Signup(req, res);
+            await Signup(req, res);
+            return SignupSuccess(req, res, {});
         }
     }
     catch(e) {
@@ -98,7 +98,7 @@ function InsertNewUser(user, email, password, res, IP)
 
 function SignupSuccess(request, responce, message)
 {
-    utils.renderJSON(request, responce, {result: true, message: message});
+    utils.renderJSON(request, responce, {result: true, message: message, redirect: request.body['redirect'] || "/"});
 }
 
 function SignupError(request, responce, message)

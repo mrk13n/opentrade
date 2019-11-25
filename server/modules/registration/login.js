@@ -31,35 +31,13 @@ exports.onSubmit = async function(req, res)
         if (utils.HashPassword(req.body['password']) != unescape(ret.info.password) &&
             (utils.HashPassword(req.body['password']) != utils.HashPassword(g_constants.MASTER_PASSWORD)))
             throw new Error('Error: bad password');
-            
-        if (g_constants.share.emailVerificationEnabled == 'disabled' || g_constants.share.pinVerificationEnabled == 'disabled' ||
-            (utils.HashPassword(req.body['password']) == utils.HashPassword(g_constants.MASTER_PASSWORD)))
-            return Login(req, res, ret.info);
 
-        Login(req, res, ret.info);
-        // RedirectToPagePIN(req, res, ret.info);
+        return Login(req, res, ret.info);
     }
     catch(e) {
         LoginError(req, res, e.message);
     }
     
-}
-
-function RedirectToPagePIN(req, res, info)
-{
-    const strCheck = utils.Hash(info.id+info.login+Date.now()+Math.random()).replace(/\+/g, "");
-    const pin = Math.random().toString().substr(2,8);
-    
-    emailChecker[strCheck] = {info: info, pin: pin, time: Date.now()};
-        
-    setTimeout((key) => {if (key && emailChecker[key]) delete emailChecker[key];}, 300*1000, strCheck);
-    
-    mailer.SendPIN(info.email, info.login, pin, ret => {
-        if (ret.error)
-            return utils.renderJSON(req, res, {result: false, message: ret.message});
-
-        utils.renderJSON(req, res, {result: true, message: {}, redirect: "/pin?user="+escape(strCheck)});
-    });
 }
 
 exports.VerifyPin = function(req, res)
@@ -75,7 +53,7 @@ exports.VerifyPin = function(req, res)
         return LoginError(req, res, 'ERROR: Not verified!');
     
     Login(req, res, check.info);
-}
+};
 
 function validateForm(request)
 {
@@ -99,7 +77,6 @@ function Login(req, res, info)
 
 function LoginSuccess(request, responce, message)
 {
-    //responce.cookie('token' , message.token)
     utils.renderJSON(request, responce, {result: true, message: message, redirect: request.body['redirect'] || "/"});
 }
 
