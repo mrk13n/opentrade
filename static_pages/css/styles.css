@@ -45,6 +45,7 @@ pre {
 
 .container {
     max-width: 100%;
+	color: black;
 }
 .d-flex-chat {
   overflow-y:auto;
